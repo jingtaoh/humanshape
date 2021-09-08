@@ -1,9 +1,10 @@
-# Linux settings.
-MATLAB_HOME = /usr/lib/matlab-8.4/
+# MacOS settings.
+MATLAB_HOME = /Applications/MATLAB_R2021a.app
 MEX         = $(MATLAB_HOME)/bin/mex
-MEXSUFFIX   = mexa64
-CXX         = g++-4.7
-F77         = gfortran-4.7
+MEXSUFFIX   = mexmaci64
+CXX         = g++
+F77         = gfortran-11
+FORTRAN_LIB = /usr/local/Cellar/gcc/11.2.0/lib/gcc/11
 CFLAGS      = -O3 -fPIC -pthread 
 FFLAGS      = -O3 -fPIC -fexceptions 
 
@@ -23,8 +24,8 @@ all: $(TARGET)
 	$(F77) $(FFLAGS) -o $@ -c $^
 
 $(TARGET): $(OBJS)
-	$(MEX) -cxx CXX=$(CXX) CC=$(CXX) FC=$(FCC) LD=$(CXX) -lgfortran -lm \
-        -O -output $@ $^
+        $(MEX) -cxx CXX=$(CXX) CC=$(CXX) FC=$(FCC) LD=$(CXX) -L$(FORTRAN_LIB) -lgfortran -lm \
+	-O -output $@ $^
 
 clean:
 	rm -f *.o $(TARGET)

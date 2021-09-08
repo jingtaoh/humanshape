@@ -1,8 +1,8 @@
-# Linux settings.
-MATLAB_HOME = /usr/lib/matlab-8.4/
+# MacOS settings.
+MATLAB_HOME = /Applications/MATLAB_R2021a.app
 MEX         = $(MATLAB_HOME)/bin/mex
-MEXSUFFIX   = mexa64
-CXX         = g++-4.7
+MEXSUFFIX   = mexmaci64
+CXX         = g++
 CFLAGS      = -O3 -fPIC -pthread 
 
 TARGET = shapepose.$(MEXSUFFIX)

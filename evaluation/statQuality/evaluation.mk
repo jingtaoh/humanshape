@@ -1,8 +1,8 @@
-# Linux settings.
-MATLAB_HOME = /usr/lib/matlab-8.4/
+# MacOS settings.
+MATLAB_HOME = /Applications/MATLAB_R2021a.app
 MEX         = $(MATLAB_HOME)/bin/mex
-MEXSUFFIX   = mexa64
-CXX         = g++-4.7
+MEXSUFFIX   = mexmaci64
+CXX         = g++
 CFLAGS      = -O3 -fPIC -pthread 
 
 TARGET = ErrorEvaluation.$(MEXSUFFIX)
@@ -18,8 +18,8 @@ all: $(TARGET)
 	$(CXX) $(CFLAGS) -I$(MATLAB_HOME)/extern/include  -o $@ -c $^
 
 $(TARGET): $(OBJS)
-	$(MEX) -cxx CXX=$(CXX) CC=$(CXX) LD=$(CXX) $(MATLAB_HOME)/bin/glnxa64/libmwlapack.so $(MATLAB_HOME)/bin/glnxa64/libmwblas.so \
-        -O -output $@ $^
+        -$(MEX) -cxx CXX=$(CXX) CC=$(CXX) LD=$(CXX) $(MATLAB_HOME)/bin/maci64/libmwlapack.dylib $(MATLAB_HOME)/bin/maci64/libmwblas.dylib \
+         -O -output $@ $^
 
 clean:
 	rm -f *.o $(TARGET)
