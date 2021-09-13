@@ -65,7 +65,7 @@ int getpose(const string inputDir, const double* motionParamsIn, const double* s
 #endif
   
 #ifndef EXEC_FAST
-  cout << "semantic shape parameters: ";
+  cout << "semantic shape parameters: " << endl;
 #endif
   CVector<double> shapeParams(numEigenVectors);  
   
@@ -141,9 +141,9 @@ void mexFunction(int nlhs, mxArray *plhs[],
   int m, n;
   
   double *pointsOut; /* 6449x3*/
-  double *jointsOut; /* 24x8: jid directions_XYZ positions_XYZ jparent_id*/
-  double *motionParamsIn;  /* 20x1*/
-  double *shapeParamsIn;  /* 31x1*/
+  double *jointsOut; /* 25x8: jid directions_XYZ positions_XYZ jparent_id*/
+  double *motionParamsIn;  /* 31x1*/
+  double *shapeParamsIn;  /* 20x1*/
   double *eigenVectorsIn; /* nEigenVec x 6449 x 3*/
   
   if (nrhs < 4){
