@@ -29,7 +29,7 @@
 #define NO_OF_EIGENVECTORS 20
 #define SKEL_SCALE_FACTOR 1.0
 
-#define EXEC_FAST 1
+// #define EXEC_FAST 1
 //#include "RenderWidget.h"
 
 class CJoint 
